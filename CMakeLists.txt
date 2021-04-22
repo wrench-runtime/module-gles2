@@ -2,12 +2,12 @@ cmake_minimum_required(VERSION 3.6)
 set(wrench_module wren_gles2)
 project(module_${wrench_module})
 
-# Add SDL
+# Add GLES2
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 if(WIN32)
   set(CMAKE_PREFIX_PATH ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/angle/win32/x86)
-  set(EGL_LIBRARY ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/angle/win32/x86/bin/libEGL.dll)
-  set(OPENGLES2_LIBRARY ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/angle/win32/x86/bin/libGLESv2.dll)
+  set(EGL_LIBRARY ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/angle/win32/x86/bin/libEGL.dll.lib)
+  set(OPENGLES2_LIBRARY ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/angle/win32/x86/bin/libGLESv2.dll.lib)
 endif()
 
 find_package(EGL REQUIRED)
@@ -32,4 +32,5 @@ target_link_libraries(module_${wrench_module}_static PUBLIC wren_runtime EGL::EG
 # Copy script file to binary folder
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/wren/${wrench_module}.wren ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${wrench_module}.wren COPYONLY)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/wren/${wrench_module}_app.wren ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${wrench_module}_app.wren COPYONLY)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/wren/${wrench_module}_util.wren ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${wrench_module}_util.wren COPYONLY)
 

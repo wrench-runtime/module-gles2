@@ -275,6 +275,7 @@ DefMethod(texImage2D, 11){
   glTexImage2D(GetEnum(1), GetInt(2), GetInt(3), GetSizei(4), GetSizei(5), GetInt(6), GetEnum(7), GetEnum(8), data);
 }
 
+
 DefMethod(texSubImage2D, 11){
   GLvoid* data = GetVoid(9, GetSizeiptr(10), GetSizeiptr(11));
   glTexSubImage2D(GetEnum(1), GetInt(2), GetInt(3), GetInt(4), GetSizei(5), GetSizei(6), GetEnum(7), GetEnum(8), data);
